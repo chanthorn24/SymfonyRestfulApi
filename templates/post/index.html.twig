@@ -1,0 +1,37 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+{#    <h1>Welcome! {{ dump(data) }}</h1>#}
+    <div class="d-flex justify-content-between flex-direction-column">
+        <h3>Lists all posts:</h3>
+        <a href="{{ path('post_create') }}" class="btn btn-primary">Add</a>
+    </div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Title</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for post in data %}
+            <tr>
+                <td>{{ id }}</td>
+                <td>
+                    <a class="text-decoration-none" href="{{ path('post_show', {id: post.id }) }}">{{ post.title }}</a>
+                </td>
+                <td>
+                    <a class="text-danger text-decoration-none" href="{{ path('post_delete', {id: post.id})}}">Delete</a>
+                </td>
+            </tr>
+            {% set id=id+1 %}
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

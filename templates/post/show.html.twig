@@ -1,0 +1,9 @@
+{% extends('base.html.twig') %}
+
+{% block body %}
+    <div>ID: {{ data.id }}</div>
+    <div>Category: {{ data.category }}</div>
+    <div>CategoryID: {{ data.category.id }}</div>
+    <div>Title: {{ data.title }}</div>
+    <img height="100px" width="200px" src="{{ '/uploads/' ~ data.image }}" alt=""/>
+{% endblock %}
